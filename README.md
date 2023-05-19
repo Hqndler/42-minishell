@@ -18,7 +18,7 @@ Prenons l'exemple de la pire ligne de commande possible : `cat|ls` (on remarquer
 - le deuxieme token aura comme str "|" avec PIPE comme type (5).
 - le dernier token aura comme str "ls" avec CMD comme type (6).
 
-(se referer à minishell.h)
+(se referer à [minishell.h](https://github.com/Hqndler/42-minishell/blob/main/include/minishell.h))
 
 Les règles sont simple :
 - Si on croise une redirection (`<`, `>`, `<<` ou `>>`) alors le token sera soit INPUT (1), soit TRUNC (3), soit HEREDOC (2) ou soit APPEND (4) respectivement.
@@ -44,7 +44,7 @@ Dans `echo ""hello""` les doubles quotes sont ouvertes et fermées instantanéme
 ### Tout ce qui est entre single quote ne doit pas être interprété.
 Donc `echo ''$USER''` affichera... La valeur de USER, vous suivez ?<br>
 Le meilleur moyen est de tester avec bash et avec des variables d'environements.<br>
-Au niveau des tokens, s'il y a des quotes alors la str sera l'entièreté du contenu de ce qu'il y a dans la quote, exemple :<br>
+Au niveau des tokens, s'il y a des quotes alors la string sera l'entièreté du contenu de ce qu'il y a dans la quote, exemple :<br>
 - `echo "cat | ls" lol` -> le deuxième token aura pour str `"cat | ls"` et ARG (7) comme type.
 - `echo "une phrase très longue avec l'arrivée d'une apostrophe" ''$?''` cette commande n'a pas de quote ouverte. Le deuxième token aura pour str `"une phrase très longue avec l'arrivée d'une apostrophe"` et le type ARG (7), le dernier token aura pour str itoa(exit->code) de la dernière commande puisque $? n'est pas entre quote.
 
@@ -52,7 +52,7 @@ Pour faire simple, une fois les quotes ouvertes la str du token continue tant qu
 
 ## Les t_cmd
 
-Un t_cmd est une liste chainée avec un fd d'infile, d'outfile et un tableau de chaine de charactères. Ce tableau sera le deuxième param qu'on passera à execve().<br>
+Un t_cmd est une liste chainée avec un fd d'infile, d'outfile et un tableau de chaine de charactères. Ce tableau sera le deuxième paramètres qu'on passera à execve().<br>
 Nous avons decider de ne pas faire les bonus donc les t_cmd seront simple : il aura autant de maillon dans la liste chainée qu'il y a de commande dans la ligne de commandes.<br>
 `echo lol` aura un seul maillon alors que `echo lol | cat -e` aura deux maillons.<br>
 Les fd d'infile et d'outfile sont là pour les redirections. C'est à la création des t_cmd que les redirections sont ouvertes.<br>
@@ -100,6 +100,10 @@ Le plus dur dans ce projet se passe à la correction, si votre projet est solide
 ## Disclaimer
 
 Notre projet n'est pas parfait mais on a réussi à le valider : $$ créer une boucle infinie, unset peut retirer la mauvaise variable, cd - / cd ~ n'est pas supporter. Les quotes imbriquée sont toute fois gérées ce qui permet d'avoir le dernier bonus pour la note de 101% WOW !
+
+## La bible
+
+[Cliquez c'est bien](https://docs.google.com/spreadsheets/d/1uJHQu0VPsjjBkR4hxOeCMEt3AOM1Hp_SmUzPFhAH-nA/edit#gid=0)
 
 ## Aperçu de la correction
 ![Correction Minishell](https://github.com/Hqndler/42-minishell/assets/69089935/e63ad3c7-67f8-4260-8e60-c79b60b2a303)
