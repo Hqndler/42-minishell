@@ -1,4 +1,4 @@
-# Minishell
+# Minishell (101 %)
 
 L’objectif de ce projet est de créer un shell minimaliste.
 
@@ -99,4 +99,7 @@ Le plus dur dans ce projet se passe à la correction, si votre projet est solide
 
 ## Disclaimer
 
-Notre projet n'est pas parfait même si on a réussi à avoir 100. $$ créer une boucle infinie, unset peut retirer la mauvaise variable, cd - / cd ~ n'est pas supporter. Les quotes imbriquée sont toute fois gérées ce qui permet d'avoir le dernier bonus pour la note de 101% WOW !
+Notre projet n'est pas parfait mais on a réussi à le valider : $$ créer une boucle infinie, unset peut retirer la mauvaise variable, cd - / cd ~ n'est pas supporter. Les quotes imbriquée sont toute fois gérées ce qui permet d'avoir le dernier bonus pour la note de 101% WOW !
+
+## Aperçu de la correction
+![Correction Minishell](https://github.com/Hqndler/42-minishell/assets/69089935/e63ad3c7-67f8-4260-8e60-c79b60b2a303)
